@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './reduxStore';
-import Home from '../src/pages/Home';
 import './css/master.css';
+import Routes from './routes';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Home />
+    <Routes />
   </Provider>, document.getElementById('root'));
