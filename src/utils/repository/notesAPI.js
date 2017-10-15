@@ -3,7 +3,7 @@ import { SERVICE_URL } from '../constants';
 
 const validateStatus = status => (response) => {
   if (response.status !== status) {
-    throw new Error('Service returned a bad status');
+    throw new Error('Service returned a non OK status code');
   }
   return response;
 };

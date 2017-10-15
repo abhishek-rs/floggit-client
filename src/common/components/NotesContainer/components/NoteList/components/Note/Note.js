@@ -1,6 +1,5 @@
 import React from 'react';
 import notePropTypes from './Note.props';
-
 import './Note.css';
 
 const Note = (props) => {

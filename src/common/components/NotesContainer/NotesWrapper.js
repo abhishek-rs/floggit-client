@@ -1,8 +1,6 @@
 import React from 'react';
-
 import NoteList from './components/NoteList';
 import './NotesWrapper.css';
-
 import notesWrapperProps from './NotesWrapper.props';
 
 const NotesWrapper = (props) => {

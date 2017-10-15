@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import NoteForm from './NoteForm';
 import { updateTitle, updateColor, addInfoItem, removeInfoItem, saveNote, closeForm } from '../../../../../reduxStore/config/note-form';
 

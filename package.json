@@ -1,32 +1,38 @@
 {
-  "name": "react-client",
+  "name": "floggit-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
     "prop-types": "^15.6.0",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "enzyme": "^2.9.1",
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0",
+    "nyc": "^11.2.1",
+    "proxyquire": "^1.8.0",
+    "react-test-renderer": "^15.6.1",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "npm run css-lint & npm run js-lint & react-scripts test --env=jsdom",
     "css-lint": "node ./node_modules/stylelint/lib/cli.js 'src/**/*.css'",
     "js-lint": "node ./node_modules/eslint/bin/eslint.js 'src/**/*.js'",
+    "coverage": "nyc react-scripts test --env=jsdom --coverage",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
 }

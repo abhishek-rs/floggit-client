@@ -1,5 +1,4 @@
 import React from 'react';
-
 import noteFormProps from './NoteForm.props';
 import './NoteForm.css';
 import ColorSelect from './components/ColorSelect';
