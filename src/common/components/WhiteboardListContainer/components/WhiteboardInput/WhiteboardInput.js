@@ -1,5 +1,6 @@
 import React from 'react';
 import whiteboardInputProps from './WhiteboardInput.props';
+import './WhiteboardInput.css';
 
 const WhiteboardInput = (props) => {
   let nameInput;
@@ -10,7 +11,7 @@ const WhiteboardInput = (props) => {
   };
 
   return (
-    <div>
+    <div className="WhiteboardInput">
       <input
         type="text"
         ref={(currentElement) => { nameInput = currentElement; }}

@@ -1,0 +1,12 @@
+.WhiteboardInput {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+button {
+  align-self: flex-end;
+  position: relative;
+  margin: var(--space-small);
+  left: var(--space-small);
+}
