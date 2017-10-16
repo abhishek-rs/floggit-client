@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const propTypes = {
+const props = {
   notes: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -14,4 +14,4 @@ const propTypes = {
   handleUpdateNote: PropTypes.func.isRequired,
 };
 
-export default propTypes;
+export default props;

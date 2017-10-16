@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-const propTypes = {
+const props = {
   onAdd: PropTypes.func.isRequired,
 };
 
-export default propTypes;
+export default props;
