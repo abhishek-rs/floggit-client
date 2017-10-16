@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const propTypes = {
+const props = {
   isLoading: PropTypes.bool.isRequired,
   activeForm: PropTypes.bool.isRequired,
   id: PropTypes.string,
@@ -18,4 +18,4 @@ const propTypes = {
   onCloseForm: PropTypes.func.isRequired,
 };
 
-export default propTypes;
+export default props;
