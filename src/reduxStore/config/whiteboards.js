@@ -91,6 +91,10 @@ const addWhiteboard = value => dispatch => whiteboardsAPI.add(value)
     dispatch(internalInactivateForm());
   })
   .catch(internalInactivateForm());
+
+const removeWhiteboard = id => dispatch => whiteboardsAPI.remove(id)
+  .then(() => {
+    dispatch(internalRemoveWhiteboard(id));
   });
 
 const loadWhiteboards = () => (dispatch) => {
