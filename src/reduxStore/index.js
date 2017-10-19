@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './config/';
+import { loadWhiteboards } from './config/whiteboards';
 import { loadNotes } from './config/notes';
 import { loadWhiteboards } from './config/whiteboards';
 

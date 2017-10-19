@@ -8,23 +8,18 @@ li.Whiteboard-item {
   max-width: 400px;
 }
 
-.Whiteboard {
-  border: solid black 1px;
-  max-width: 400px;
-}
-
 .Whiteboard-value {
   line-height: 30px;
   margin-left: var(--space-small);
   font-size: 2em;
 }
 
-li.Whiteboard-item.added-item {
+/*li.Whiteboard-item.added-item {
   opacity: 0;
   animation: new-item-animation 1s ease-in forwards;
-}
+}*/
 
-@keyframes new-item-animation {
+/*@keyframes new-item-animation {
   from {
     opacity: 0;
   }
@@ -32,4 +27,4 @@ li.Whiteboard-item.added-item {
   to {
     opacity: 1;
   }
-}
+}*/

@@ -5,23 +5,42 @@ import whiteboardListProps from './WhiteboardListWrapper.props';
 import './WhiteboardListContainer.css';
 
 const WhiteboardListWrapper = (props) => {
-  const generateList = (whiteboards, handleRemove) => (
-    <WhiteboardList
-      whiteboards={whiteboards}
-      onItemRemove={handleRemove}
-    />
+  const generateForm = handleAdd => (
+    <WhiteboardInput onAdd={handleAdd} />
   );
 
   const generateLoadingWidget = () => (
     <div> Loading </div>
   );
 
+  const generateList = (isLoading, whiteboards, handleRemove) => (
+    <div>
+      {
+        isLoading ?
+          generateLoadingWidget :
+          <WhiteboardList
+            whiteboards={whiteboards}
+            onItemRemove={handleRemove}
+          />
+      }
+    </div>
+  );
+
   return (
     <div className="WhiteboardListContainer-wrapper">
+      <div className="WhiteboardListContainer-create-button">
+        <button
+          type="button"
+          className="HomeContainer-create-button"
+          onClick={props.handleActivateForm}
+        >
+          Create whiteboard
+        </button>
+      </div>
       {
-        props.isLoading ?
-          generateLoadingWidget() :
-          generateList(props.whiteboards, props.props.handleRemove)
+        props.isFormActive ?
+          generateForm(props.handleAdd) :
+          generateList(props.isLoading, props.whiteboards, props.handleRemove)
       }
     </div>
   );

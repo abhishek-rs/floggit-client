@@ -69,6 +69,7 @@ const internalAddNote = value => ({
   type: NOTE_ADD,
   data: {
     id: value.id,
+    whiteboardId: value.whiteboardId,
     title: value.title,
     color: value.color,
     information: value.information,
@@ -85,6 +86,7 @@ const internalUpdateNote = value => ({
   type: NOTE_UPDATE,
   data: {
     id: value.id,
+    whiteboardId: value.whiteboardId,
     title: value.title,
     color: value.color,
     information: value.information,

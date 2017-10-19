@@ -1,4 +1,4 @@
 {
-  "name": "WhiteboardListWrapper",
-  "main": "WhiteboardListWrapper.js"
+  "name": "WhiteboardListContainer",
+  "main": "WhiteboardListContainer.js"
 }
