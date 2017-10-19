@@ -1,0 +1,117 @@
+import whiteboardsAPI from '../../utils/repository/whiteboardsAPI';
+
+// ACTIONS
+const WHITEBOARD_ADD = 'WHITEBOARD_ADD';
+const WHITEBOARD_REMOVE = 'WHITEBOARD_REMOVE';
+const WHITEBOARD_LIST_REPLACE = 'WHITEBOARD_LIST_REPLACE';
+const WHITEBOARD_LOADING = 'WHITEBOARD_LOADING';
+const WHITEBOARD_LOADED = 'WHITEBOARD_LOADED';
+const WHITEBOARD_FORM_ACTIVE = 'WHITEBOARD_FORM_ACTIVE';
+const WHITEBOARD_FORM_INACTIVE = 'WHITEBOARD_FORM_INACTIVE';
+
+const initialState = {
+  data: [],
+  activeForm: false,
+  isLoading: false,
+};
+
+// REDUCER
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case WHITEBOARD_ADD: {
+      const newWhiteboards = [...state.data, action.data];
+      return Object.assign({}, state, { data: newWhiteboards });
+    }
+    case WHITEBOARD_REMOVE: {
+      const newWhiteboards = state.data.filter(whiteboard => whiteboard.id !== action.data.id);
+      return Object.assign({}, state, { data: newWhiteboards });
+    }
+    case WHITEBOARD_LIST_REPLACE: {
+      const newWhiteboards = [...action.data.whiteboards];
+      return Object.assign({}, state, { data: newWhiteboards });
+    }
+    case WHITEBOARD_LOADING: {
+      return Object.assign({}, state, { isLoading: true });
+    }
+    case WHITEBOARD_LOADED: {
+      return Object.assign({}, state, { isLoading: false });
+    }
+    case WHITEBOARD_FORM_ACTIVE: {
+      return Object.assign({}, state, { activeForm: true });
+    }
+    case WHITEBOARD_FORM_INACTIVE: {
+      return Object.assign({}, state, { activeForm: false });
+    }
+    default:
+      return state;
+  }
+};
+
+// ACTION CREATORS
+const internalAddWhiteboard = (id, value) => ({
+  type: WHITEBOARD_ADD,
+  data: {
+    id,
+    name: value,
+  },
+});
+
+const internalRemoveWhiteboard = id => ({
+  type: WHITEBOARD_REMOVE,
+  data: { id },
+});
+
+const internalReplaceAllWhiteboards = whiteboards => ({
+  type: WHITEBOARD_LIST_REPLACE,
+  data: {
+    whiteboards,
+  },
+});
+
+const internalLoadingWhiteboards = () => ({
+  type: WHITEBOARD_LOADING,
+});
+
+const internalLoadedWhiteboards = () => ({
+  type: WHITEBOARD_LOADED,
+});
+
+const internalActivateForm = () => ({
+  type: WHITEBOARD_FORM_ACTIVE,
+});
+
+const internalInactivateForm = () => ({
+  type: WHITEBOARD_FORM_INACTIVE,
+});
+
+// THUNK
+const addWhiteboard = value => dispatch => whiteboardsAPI.add(value)
+  .then((id) => {
+    dispatch(internalAddWhiteboard(id, value));
+    dispatch(internalInactivateForm());
+  })
+  .catch(internalInactivateForm());
+
+const removeWhiteboard = id => dispatch => whiteboardsAPI.remove(id)
+  .then(() => {
+    dispatch(internalRemoveWhiteboard(id));
+  });
+
+const loadWhiteboards = () => (dispatch) => {
+  dispatch(internalLoadingWhiteboards());
+  return whiteboardsAPI.getAll()
+    .then((whiteboards) => {
+      dispatch(internalReplaceAllWhiteboards(whiteboards));
+      dispatch(internalLoadedWhiteboards());
+    })
+    .catch(() => {
+      dispatch(internalLoadedWhiteboards());
+    });
+};
+
+const activateForm = () => (dispatch) => {
+  dispatch(internalActivateForm());
+};
+
+export { addWhiteboard, removeWhiteboard, loadWhiteboards, activateForm };
+export default reducer;

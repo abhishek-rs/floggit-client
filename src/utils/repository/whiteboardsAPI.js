@@ -29,7 +29,7 @@ const add = value => axios({
   },
   method: 'POST',
   url: `${SERVICE_URL}/v1/whiteboards`,
-  data: JSON.stringify({ name: value.name }),
+  data: JSON.stringify({ name: value }),
 })
   .then(validateStatus(201))
   .then(response => response.data.id)
