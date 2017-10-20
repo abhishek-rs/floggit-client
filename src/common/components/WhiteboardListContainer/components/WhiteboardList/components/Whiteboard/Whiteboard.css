@@ -1,30 +1,48 @@
 li.Whiteboard-item {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  list-style-type: none;
-  margin: 0;
-  padding: 5px;
-  max-width: 400px;
+  margin: 0 var(--space-small) var(--space-small) 0;
+  padding: var(--space-default);
+  position: relative;
+  width: 280px;
+  min-height: 100px;
+  animation: jumpIn var(--animation-timing-superfast) ease-out;
+  background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-default) 	1.41421rem, var(--color-note-default));
 }
 
-.Whiteboard-value {
-  line-height: 30px;
+li.Whiteboard-item::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-width: 2rem 2rem 0 0;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+li.Whiteboard-item::after {
+  background: linear-gradient(to right, var(--color-note-info) 25%, #ffcd02 25%, #ffcd02 50%, #e84f47 50%, #e84f47 75%, var(--color-note-success) 75%);
+  position: absolute;
+  content: '';
+  height: 4px;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+.Whiteboard-item-value {
+  line-height: 60px;
   margin-left: var(--space-small);
-  font-size: 2em;
+  font-size: var(--font-size-l);
 }
 
-/*li.Whiteboard-item.added-item {
-  opacity: 0;
-  animation: new-item-animation 1s ease-in forwards;
-}*/
+.Whiteboard-rm-btn {
+  margin-right: 10px;
+  position: relative;
+  top: var(--space-small);
+}
 
-/*@keyframes new-item-animation {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}*/
+.Whiteboard-notes-btn {
+  position: relative;
+  top: 10px;
+}
