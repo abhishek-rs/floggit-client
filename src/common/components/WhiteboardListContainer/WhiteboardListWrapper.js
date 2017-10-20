@@ -2,11 +2,13 @@ import React from 'react';
 import WhiteboardInput from './components/WhiteboardInput';
 import WhiteboardList from './components/WhiteboardList';
 import whiteboardListProps from './WhiteboardListWrapper.props';
-import './WhiteboardListContainer.css';
+import './WhiteboardListWrapper.css';
 
 const WhiteboardListWrapper = (props) => {
-  const generateForm = handleAdd => (
-    <WhiteboardInput onAdd={handleAdd} />
+  const generateForm = (handleAdd, handleCloseForm) => (
+    <div className="Whiteboard-input">
+      <WhiteboardInput onAdd={handleAdd} onCloseForm={handleCloseForm} />
+    </div>
   );
 
   const generateLoadingWidget = () => (
@@ -28,18 +30,20 @@ const WhiteboardListWrapper = (props) => {
 
   return (
     <div className="WhiteboardListContainer-wrapper">
-      <div className="WhiteboardListContainer-create-button">
+      <div className="WhiteboardListContainer-toolbar">
         <button
           type="button"
-          className="HomeContainer-create-button"
+          className="WhiteboardListContainer-create-button"
+          disabled={props.isFormActive}
           onClick={props.handleActivateForm}
         >
-          Create whiteboard
+          New whiteboard
         </button>
+        <h1 className="WhiteboardListContainer-header">Whiteboards</h1>
       </div>
       {
         props.isFormActive ?
-          generateForm(props.handleAdd) :
+          generateForm(props.handleAdd, props.handleCloseForm) :
           generateList(props.isLoading, props.whiteboards, props.handleRemove)
       }
     </div>
