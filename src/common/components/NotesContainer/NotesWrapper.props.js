@@ -10,6 +10,7 @@ const props = {
       text: PropTypes.string.isRequired,
     })),
   })),
+  currentWhiteboardId: PropTypes.string.isRequired,
   handleRemoveNote: PropTypes.func.isRequired,
   handleUpdateNote: PropTypes.func.isRequired,
 };

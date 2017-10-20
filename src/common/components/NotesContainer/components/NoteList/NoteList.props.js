@@ -11,6 +11,7 @@ const props = {
     })),
   })),
   noteFormId: PropTypes.string,
+  currentWhiteboardId: PropTypes.string.isRequired,
   activeForm: PropTypes.bool.isRequired,
   onRemoveNote: PropTypes.func.isRequired,
   onUpdateNote: PropTypes.func.isRequired,

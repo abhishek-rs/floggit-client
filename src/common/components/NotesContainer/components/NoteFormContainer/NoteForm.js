@@ -25,7 +25,7 @@ const NoteForm = (props) => {
   };
 
   const handleSaveNote = () => {
-    props.onSaveNote();
+    props.onSaveNote(props.whiteboardId);
   };
 
   const handleCloseForm = () => {

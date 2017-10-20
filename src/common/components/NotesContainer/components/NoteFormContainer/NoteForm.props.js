@@ -4,6 +4,7 @@ const props = {
   isLoading: PropTypes.bool.isRequired,
   activeForm: PropTypes.bool.isRequired,
   id: PropTypes.string,
+  whiteboardId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   information: PropTypes.arrayOf(PropTypes.shape({
