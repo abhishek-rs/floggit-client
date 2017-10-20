@@ -39,7 +39,7 @@ const WhiteboardListWrapper = (props) => {
         >
           New whiteboard
         </button>
-        <h1 className="WhiteboardListContainer-header">Whiteboards</h1>
+        <h1 className="WhiteboardListContainer-header">Whiteboards ({props.whiteboards.length})</h1>
       </div>
       {
         props.isFormActive ?
