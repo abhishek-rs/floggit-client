@@ -13,7 +13,6 @@ const WhiteboardList = (props) => {
       {
         props.whiteboards.map(whiteboard => (
           <Whiteboard
-            animate
             key={whiteboard.id}
             id={whiteboard.id}
             name={whiteboard.name}

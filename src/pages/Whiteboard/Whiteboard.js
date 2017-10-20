@@ -7,11 +7,12 @@ import '../../css/font-awesome.min.css';
 
 const Whiteboard = props => (
   <div>
-    <NavLink to="/" activeClassName="Home-active-link">
-      <header>
-        <div className="logo" /><h1>Flogg<strong>IT</strong></h1>
-      </header>
-    </NavLink>
+    <header>
+      <div className="logo" />
+      <NavLink to={'/'}>
+        <h1>Flogg<strong>IT</strong></h1>
+      </NavLink>
+    </header>
     <NotesContainer currentWhiteboardId={props.match.params.id} />
   </div>
 );
