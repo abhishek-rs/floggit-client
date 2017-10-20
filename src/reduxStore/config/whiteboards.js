@@ -85,10 +85,22 @@ const internalInactivateForm = () => ({
 });
 
 // THUNK
+const activateForm = () => (dispatch) => {
+  const header = document.querySelector('.WhiteboardListContainer-header');
+  header.style.display = 'none';
+  dispatch(internalActivateForm());
+};
+
+const inactivateForm = () => (dispatch) => {
+  const header = document.querySelector('.WhiteboardListContainer-header');
+  header.style.display = 'block';
+  dispatch(internalInactivateForm());
+};
+
 const addWhiteboard = value => dispatch => whiteboardsAPI.add(value)
   .then((id) => {
     dispatch(internalAddWhiteboard(id, value));
-    dispatch(internalInactivateForm());
+    dispatch(inactivateForm());
   })
   .catch(internalInactivateForm());
 
@@ -109,17 +121,6 @@ const loadWhiteboards = () => (dispatch) => {
     });
 };
 
-const activateForm = () => (dispatch) => {
-  const header = document.querySelector('.WhiteboardListContainer-header');
-  header.style.display = 'none';
-  dispatch(internalActivateForm());
-};
-
-const inactivateForm = () => (dispatch) => {
-  const header = document.querySelector('.WhiteboardListContainer-header');
-  header.style.display = 'block';
-  dispatch(internalInactivateForm());
-};
 
 export { addWhiteboard, removeWhiteboard, loadWhiteboards, activateForm, inactivateForm };
 export default reducer;
