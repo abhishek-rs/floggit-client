@@ -60,9 +60,6 @@ const reducer = (state = initialState, action) => {
       });
       return Object.assign({}, state, { data: newData });
     }
-    case NOTES_UPDATE_WHITEBOARD_ID: {
-      return Object.assign({}, state, { currentWhiteboardId: action.data });
-    }
     default:
       return state;
   }
