@@ -1,12 +1,39 @@
-.WhiteboardInput {
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;
+div.WhiteboardInput-form::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-width: 2rem 2rem 0 0;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.15) transparent;
 }
 
-button {
-  align-self: flex-end;
+.WhiteboardInput-form h3 {
+  font-size: var(--font-size-default);
+}
+
+.WhiteboardInput-form {
+  margin: 0 var(--space-small) var(--space-small) 0;
+  margin-left: var(--space-default);
+  padding: var(--space-default);
+  display: flex;
+  flex-direction: column;
+  width: 280px;
   position: relative;
-  margin: var(--space-small);
-  left: var(--space-small);
+  animation: fadeIn var(--animation-timing-fast) ease-out;
+  background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-default) 	1.41421rem, var(--color-note-default));
+}
+
+.WhiteboardInput-button-container {
+  margin: var(--space-default) 0 2px 0;
+}
+
+.WhiteboardInput-form::after {
+  background: linear-gradient(to right, var(--color-note-info) 25%, #ffcd02 25%, #ffcd02 50%, #e84f47 50%, #e84f47 75%, var(--color-note-success) 75%);
+  position: absolute;
+  content: '';
+  height: 4px;
+  right: 0;
+  left: 0;
+  top: 0;
 }

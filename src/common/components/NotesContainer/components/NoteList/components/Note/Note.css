@@ -28,6 +28,7 @@ div.Note.SUCCESS {
 
 div.Note h2 {
   overflow: hidden;
+  height: var(--space-extra);
 }
 
 div.Note .information-list {

@@ -110,8 +110,16 @@ const loadWhiteboards = () => (dispatch) => {
 };
 
 const activateForm = () => (dispatch) => {
+  const header = document.querySelector('.WhiteboardListContainer-header');
+  header.style.display = 'none';
   dispatch(internalActivateForm());
 };
 
-export { addWhiteboard, removeWhiteboard, loadWhiteboards, activateForm };
+const inactivateForm = () => (dispatch) => {
+  const header = document.querySelector('.WhiteboardListContainer-header');
+  header.style.display = 'block';
+  dispatch(internalInactivateForm());
+};
+
+export { addWhiteboard, removeWhiteboard, loadWhiteboards, activateForm, inactivateForm };
 export default reducer;

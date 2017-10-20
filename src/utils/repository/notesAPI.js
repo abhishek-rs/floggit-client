@@ -32,13 +32,17 @@ const add = (whiteboardId, title, color, information) => axios({
   },
   method: 'POST',
   url: `${SERVICE_URL}/v1/notes`,
-  data: JSON.stringify({ whiteboardId, title, color, information }),
+  data: JSON.stringify({
+    whiteboardId,
+    title,
+    color,
+    information }),
 })
   .then(validateStatus(201))
   .then(response => response.data.id)
   .catch(err => err.message);
 
-const update = value => axios({
+const update = (whiteboardId, value) => axios({
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
@@ -47,7 +51,7 @@ const update = value => axios({
   url: `${SERVICE_URL}/v1/notes/${value.id}`,
   data: JSON.stringify({
     id: value.id,
-    whiteboardId: value.whiteboardId,
+    whiteboardId,
     title: value.title,
     color: value.color,
     information: value.information,

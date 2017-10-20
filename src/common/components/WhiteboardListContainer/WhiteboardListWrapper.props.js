@@ -10,6 +10,7 @@ const props = {
   handleActivateForm: PropTypes.func.isRequired,
   handleAdd: PropTypes.func.isRequired,
   handleRemove: PropTypes.func.isRequired,
+  handleCloseForm: PropTypes.func.isRequired,
 };
 
 export default props;

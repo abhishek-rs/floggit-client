@@ -8,20 +8,20 @@ const Whiteboard = (props) => {
     props.onRemove(props.id);
   };
 
-  const animateClass = props.animate ? 'added-item' : '';
   return (
     <div className="Whiteboard">
-      <li className={`Whiteboard-item ${animateClass}`}>
-        <div className="Whiteboard-value">
-          <NavLink to={`whiteboards/${props.id}`}>
-            {props.name}
-          </NavLink>
+      <li className={'Whiteboard-item'}>
+        <div className="Whiteboard-item-value">
+          {props.name}
+          <div className="Whiteboard-item-toolbar">
+            <button className="Whiteboard-rm-btn icon-button danger" type="button" onClick={remove}>
+              <i className="fa fa-trash fa-lg" />
+            </button>
+            <button className="Whiteboard-notes-btn icon-button danger" type="button">
+              <NavLink to={`whiteboards/${props.id}`} style={{ textDecoration: 'none' }}><i className="fa fa-arrow-circle-o-right" /></NavLink>
+            </button>
+          </div>
         </div>
-        <button
-          onClick={remove}
-        >
-        X
-        </button>
       </li>
     </div>
   );

@@ -24,8 +24,8 @@ const mapDispatchToProps = dispatch => ({
   onRemoveInfoItem: (value) => {
     dispatch(removeInfoItem(value));
   },
-  onSaveNote: () => {
-    dispatch(saveNote());
+  onSaveNote: (whiteboardId) => {
+    dispatch(saveNote(whiteboardId));
   },
   onCloseForm: () => {
     dispatch(closeForm());

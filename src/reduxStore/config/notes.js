@@ -8,6 +8,7 @@ const NOTES_LIST_REPLACE = 'NOTES_LIST_REPLACE';
 const NOTES_LOADING = 'NOTES_LOADING';
 const NOTES_LOADED = 'NOTES_LOADED';
 const NOTES_FILTER = 'NOTES_FILTER';
+const NOTES_UPDATE_WHITEBOARD_ID = 'NOTES_UPDATE_WHITEBOARD_ID';
 
 const initialState = {
   data: [],
@@ -59,16 +60,19 @@ const reducer = (state = initialState, action) => {
       });
       return Object.assign({}, state, { data: newData });
     }
+    case NOTES_UPDATE_WHITEBOARD_ID: {
+      return Object.assign({}, state, { currentWhiteboardId: action.data });
+    }
     default:
       return state;
   }
 };
 
 // ACTION CREATORS
-const internalAddNote = value => ({
+const internalAddNote = (id, value) => ({
   type: NOTE_ADD,
   data: {
-    id: value.id,
+    id,
     whiteboardId: value.whiteboardId,
     title: value.title,
     color: value.color,
@@ -116,13 +120,13 @@ const filterNotes = value => ({
 });
 
 // THUNK
-const addNote = value => (dispatch) => {
+const addNote = (whiteboardId, value) => (dispatch) => {
   dispatch(internalLoadingNotes());
-  return notesAPI.add(value.title, value.color, value.information)
+  return notesAPI.add(whiteboardId, value.title, value.color, value.information)
     .then((id) => {
       const newValue = value;
-      newValue.id = id;
-      dispatch(internalAddNote(newValue));
+      newValue.whiteboardId = whiteboardId;
+      dispatch(internalAddNote(id, newValue));
       dispatch(internalLoadedNotes());
     });
 };
@@ -136,11 +140,13 @@ const removeNote = id => (dispatch) => {
     });
 };
 
-const updateNote = value => (dispatch) => {
+const updateNote = (whiteboardId, value) => (dispatch) => {
   dispatch(internalLoadingNotes());
-  return notesAPI.update(value)
+  return notesAPI.update(whiteboardId, value)
     .then(() => {
-      dispatch(internalUpdateNote(value));
+      const newValue = value;
+      newValue.whiteboardId = whiteboardId;
+      dispatch(internalUpdateNote(newValue));
       dispatch(internalLoadedNotes());
     });
 };

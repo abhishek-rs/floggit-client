@@ -86,16 +86,16 @@ const openForm = () => ({
   type: NOTEFORM_OPEN,
 });
 
-const saveNote = () => (dispatch, getState) => {
+const saveNote = whiteboardId => (dispatch, getState) => {
   if (!getState().noteForm.id) {
     dispatch(
-      addNote(getState().noteForm))
+      addNote(whiteboardId, getState().noteForm))
       .then(() => {
         dispatch(closeForm());
       });
   } else {
     dispatch(
-      updateNote(getState().noteForm))
+      updateNote(whiteboardId, getState().noteForm))
       .then(() => {
         dispatch(closeForm());
       });

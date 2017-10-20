@@ -5,24 +5,38 @@ import './WhiteboardInput.css';
 const WhiteboardInput = (props) => {
   let nameInput;
 
-  const handleClick = () => {
+  const handleCreateClick = () => {
     props.onAdd(nameInput.value);
     nameInput.value = '';
   };
 
+  const handleCancelClick = () => {
+    props.onCloseForm();
+  };
+
   return (
-    <div className="WhiteboardInput">
+    <div className="WhiteboardInput-form">
+      <h3>Create whiteboard</h3>
       <input
         type="text"
         ref={(currentElement) => { nameInput = currentElement; }}
         placeholder="name"
       />
-      <button
-        type="button"
-        onClick={handleClick}
-      >
-      create
-      </button>
+      <div className="WhiteboardInput-button-container">
+        <button
+          type="button"
+          onClick={handleCreateClick}
+        >
+          create
+        </button>
+        <button
+          type="button"
+          className="secondary"
+          onClick={handleCancelClick}
+        >
+      cancel
+        </button>
+      </div>
     </div>
   );
 };

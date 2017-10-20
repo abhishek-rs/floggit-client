@@ -1,0 +1,22 @@
+.WhiteboardListContainer-toolbar {
+  display: flex;
+}
+
+.WhiteboardListContainer-header {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.WhiteboardListContainer-create-button {
+  margin: var(--space-default);
+}
+
+.Whiteboard-input {
+  width: 100%;
+  align-self: center;
+}
+
+.WhiteboardListContainer-toolbar h1 {
+  display: flex;
+  align-self: flex-end;
+}
