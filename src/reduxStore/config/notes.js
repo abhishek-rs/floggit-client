@@ -1,13 +1,13 @@
 import notesAPI from '../../utils/repository/notesAPI';
 
 // ACTIONS
-const NOTE_ADD = 'NOTES_ADD';
-const NOTE_REMOVE = 'NOTES_REMOVE';
+const NOTE_ADD = 'NOTE_ADD';
+const NOTE_REMOVE = 'NOTE_REMOVE';
 const NOTE_UPDATE = 'NOTE_UPDATE';
-const NOTES_LIST_REPLACE = 'NOTES_LIST_REPLACE';
-const NOTES_LOADING = 'NOTES_LOADING';
-const NOTES_LOADED = 'NOTES_LOADED';
-const NOTES_FILTER = 'NOTES_FILTER';
+const NOTE_LIST_REPLACE = 'NOTE_LIST_REPLACE';
+const NOTE_LOADING = 'NOTE_LOADING';
+const NOTE_LOADED = 'NOTE_LOADED';
+const NOTE_FILTER = 'NOTE_FILTER';
 
 const initialState = {
   data: [],
@@ -18,7 +18,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case NOTE_ADD: {
-      const newNotes = [action.data, ...state.data];
+      const newNotes = [...state.data, action.data];
       return Object.assign({}, state, { data: newNotes });
     }
     case NOTE_REMOVE: {
@@ -34,19 +34,19 @@ const reducer = (state = initialState, action) => {
       });
       return Object.assign({}, state, { data: newNotes });
     }
-    case NOTES_LIST_REPLACE: {
+    case NOTE_LIST_REPLACE: {
       const newNotes = [...action.data.notes]
         .map(note => Object.assign({}, note, { display: true }));
       newNotes.reverse();
       return Object.assign({}, state, { data: newNotes });
     }
-    case NOTES_LOADING: {
+    case NOTE_LOADING: {
       return Object.assign({}, state, { isLoading: true });
     }
-    case NOTES_LOADED: {
+    case NOTE_LOADED: {
       return Object.assign({}, state, { isLoading: false });
     }
-    case NOTES_FILTER: {
+    case NOTE_FILTER: {
       const newData = state.data.map((item) => {
         let val = false;
         if (item.title.toUpperCase().includes(action.value.toUpperCase())) val = true;
@@ -96,22 +96,22 @@ const internalUpdateNote = value => ({
 
 
 const internalReplaceAllNotes = notes => ({
-  type: NOTES_LIST_REPLACE,
+  type: NOTE_LIST_REPLACE,
   data: {
     notes,
   },
 });
 
 const internalLoadingNotes = () => ({
-  type: NOTES_LOADING,
+  type: NOTE_LOADING,
 });
 
 const internalLoadedNotes = () => ({
-  type: NOTES_LOADED,
+  type: NOTE_LOADED,
 });
 
 const filterNotes = value => ({
-  type: NOTES_FILTER,
+  type: NOTE_FILTER,
   value,
 });
 
