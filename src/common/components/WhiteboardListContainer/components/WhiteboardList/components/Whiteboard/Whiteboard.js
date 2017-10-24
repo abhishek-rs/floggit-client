@@ -14,11 +14,24 @@ const Whiteboard = (props) => {
         <div className="Whiteboard-item-value">
           {props.name}
           <div className="Whiteboard-item-toolbar">
-            <button className="Whiteboard-rm-btn icon-button danger" type="button" onClick={remove}>
+            <button
+              className="Whiteboard-rm-btn icon-button danger test--Whiteboard-remove-button"
+              type="button"
+              onClick={remove}
+            >
               <i className="fa fa-trash fa-lg" />
             </button>
-            <button className="Whiteboard-notes-btn icon-button danger" type="button">
-              <NavLink to={`whiteboards/${props.id}`} style={{ textDecoration: 'none' }}><i className="fa fa-arrow-circle-o-right" /></NavLink>
+            <button
+              className="Whiteboard-notes-btn icon-button danger test--Whiteboard-notes-button"
+              type="button"
+            >
+              <NavLink
+                className="test--Whiteboard-notes-link"
+                to={`whiteboards/${props.id}`}
+                style={{ textDecoration: 'none' }}
+              >
+                <i className="fa fa-arrow-circle-o-right" />
+              </NavLink>
             </button>
           </div>
         </div>
