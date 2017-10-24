@@ -15,16 +15,28 @@ const Note = (props) => {
       <div className="note-content">
         <h2>{props.title}</h2>
         <ul className="generic-list information-list">
-          {props.information.map(item => (
-            <li key={item.id}> {item.text} </li>
-          ))}
+          {
+            props.information.map(item => (
+              <li key={item.id}>
+                {item.text}
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div className="note-toolbar">
-        <button className="icon-button danger" type="button" onClick={remove}>
+        <button
+          className="icon-button danger test--Note-remove-btn"
+          type="button"
+          onClick={remove}
+        >
           <i className="fa fa-trash fa-lg" />
         </button>
-        <button className="icon-button" type="button" onClick={edit}>
+        <button
+          className="icon-button test--Note-update-btn"
+          type="button"
+          onClick={edit}
+        >
           <i className="fa fa-pencil fa-lg" />
         </button>
       </div>

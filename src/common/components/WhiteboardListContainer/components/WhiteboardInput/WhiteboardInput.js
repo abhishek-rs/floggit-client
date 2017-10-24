@@ -18,12 +18,14 @@ const WhiteboardInput = (props) => {
     <div className="WhiteboardInput-form">
       <h3>Create whiteboard</h3>
       <input
+        className="test--WhiteboardInput-add-item-input"
         type="text"
         ref={(currentElement) => { nameInput = currentElement; }}
         placeholder="name"
       />
       <div className="WhiteboardInput-button-container">
         <button
+          className="test--WhiteboardInput-add-item-button"
           type="button"
           onClick={handleCreateClick}
         >
