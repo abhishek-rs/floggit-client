@@ -6,20 +6,20 @@ import './WhiteboardListWrapper.css';
 
 const WhiteboardListWrapper = (props) => {
   const generateForm = (handleAdd, handleCloseForm) => (
-    <div className="Whiteboard-input">
+    <div className="Whiteboard-input test--WhiteboardListWrapper-form">
       <WhiteboardInput onAdd={handleAdd} onCloseForm={handleCloseForm} />
     </div>
   );
 
   const generateLoadingWidget = () => (
-    <div> Loading </div>
+    <div className="test--WhiteboardListWrapper-loading"> Loading </div>
   );
 
   const generateList = (isLoading, whiteboards, handleRemove) => (
     <div>
       {
         isLoading ?
-          generateLoadingWidget :
+          generateLoadingWidget() :
           <WhiteboardList
             whiteboards={whiteboards}
             onItemRemove={handleRemove}
