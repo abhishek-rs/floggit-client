@@ -35,6 +35,7 @@ const NoteForm = (props) => {
   return (
     <div className={`NoteForm ${props.color}`}>
       <input
+        className="test--NoteForm-title-input"
         type="text"
         value={props.title}
         onChange={handleChangeTitle}
@@ -43,12 +44,14 @@ const NoteForm = (props) => {
       /><br />
       <div className="one-line-input">
         <input
+          className="test--NoteForm-info-item-input"
           type="text"
           placeholder="Add information"
           disabled={props.isLoading}
           ref={(c) => { infoItemInput = c; }}
         />
         <button
+          className="test--NoteForm-info-item-btn"
           type="button"
           onClick={handleAddInfoItem}
           disabled={props.isLoading}
@@ -57,18 +60,20 @@ const NoteForm = (props) => {
         </button>
       </div>
       <ul className="generic-list info-list">
-        {props.information.map(infoItem => (
-          <li key={infoItem.id}>{infoItem.text}
-            <button
-              className="icon-button danger"
-              type="button"
-              disabled={props.isLoading}
-              onClick={() => handleRemoveInfoItem(infoItem.id)}
-            >
-              <i className="fa fa-trash" />
-            </button>
-          </li>
-        ))}
+        {
+          props.information.map(infoItem => (
+            <li key={infoItem.id}>{infoItem.text}
+              <button
+                className="icon-button danger test--NoteForm-info-item-remove-btn"
+                type="button"
+                disabled={props.isLoading}
+                onClick={() => handleRemoveInfoItem(infoItem.id)}
+              >
+                <i className="fa fa-trash" />
+              </button>
+            </li>
+          ))
+        }
       </ul>
       <ColorSelect
         colors={NOTE_COLORS}
@@ -77,6 +82,7 @@ const NoteForm = (props) => {
         disabled={props.isLoading}
       />
       <button
+        className="test--NoteForm-save-btn"
         type="button"
         onClick={handleSaveNote}
         disabled={props.isLoading}
@@ -84,7 +90,7 @@ const NoteForm = (props) => {
         {props.id ? 'Update note' : 'Save Note'}
       </button>
       <button
-        className="secondary"
+        className="secondary test--NoteForm-cancel-btn"
         type="button"
         onClick={handleCloseForm}
         disabled={props.isLoading}
