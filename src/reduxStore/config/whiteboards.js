@@ -1,4 +1,6 @@
 import whiteboardsAPI from '../../utils/repository/whiteboardsAPI';
+import notesAPI from '../../utils/repository/notesAPI';
+import { removeNote } from './notes';
 
 // ACTIONS
 const WHITEBOARD_ADD = 'WHITEBOARD_ADD';
@@ -107,6 +109,14 @@ const addWhiteboard = value => dispatch => whiteboardsAPI.add(value)
 const removeWhiteboard = id => dispatch => whiteboardsAPI.remove(id)
   .then(() => {
     dispatch(internalRemoveWhiteboard(id));
+    return notesAPI.getAll();
+  })
+  .then((notes) => {
+    notes.forEach((note) => {
+      if (note.whiteboardId === id) {
+        dispatch(removeNote(note.id));
+      }
+    });
   });
 
 const loadWhiteboards = () => (dispatch) => {
